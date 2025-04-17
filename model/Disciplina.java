@@ -1,7 +1,16 @@
+package model;
+
 public class Disciplina {
+
     private int codigodisciplina;
     private String nomedisciplina;
     private double cargahoraria;
+
+    public Disciplina(int codigodisciplina, String nomedisciplina, double cargahoraria) {
+        this.codigodisciplina = codigodisciplina;
+        this.nomedisciplina = nomedisciplina;
+        this.cargahoraria = cargahoraria;
+    }
 
     public int getCodigodisciplina() {
         return codigodisciplina;
@@ -27,10 +36,5 @@ public class Disciplina {
         this.cargahoraria = cargahoraria;
     }
 
-    public Disciplina(int codigodisciplina, String nomedisciplina, double cargahoraria) {
-        this.codigodisciplina = codigodisciplina;
-        this.nomedisciplina = nomedisciplina;
-        this.cargahoraria = cargahoraria;
-    }
 
 }
