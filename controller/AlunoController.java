@@ -1,10 +1,9 @@
 package controller;
 
 import dao.AlunoDAO;
+import java.util.Scanner;
 import model.Aluno;
 import view.AlunoView;
-
-import java.util.Scanner;
 
 public class AlunoController {
 
@@ -21,7 +20,7 @@ public class AlunoController {
         int idade  = scan.nextInt();
 
         AlunoView.Curso(null);
-        int opcap = scan.nextInt();
+        int opcao = scan.nextInt();
 
         Aluno aluno = new Aluno(NewMatricula(), nome, idade, null);
         AlunoDAO.insert(aluno);
