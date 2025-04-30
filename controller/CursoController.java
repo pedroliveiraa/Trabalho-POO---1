@@ -1,8 +1,6 @@
 package controller;
-
-import java.util.Scanner;
-
 import dao.CursoDAO;
+import java.util.Scanner;
 import model.Curso;
 
 public class CursoController {
@@ -22,8 +20,9 @@ public class CursoController {
 
         System.out.print("Informe o nome do curso: ");
         String nome = scanner.next();
-
-        Curso curso = new Curso(codigo, nome);
+        System.out.print("Informe o turno do curso (M/T/N): ");
+        char turno = scanner.next().charAt(0);
+        Curso curso = new Curso(codigo, nome, turno); // Criando o curso com turno 'M' como padrão
         CursoDAO.insert(curso); // Usando o DAO para salvar o curso
         System.out.println("Curso cadastrado com sucesso!");
     }
@@ -50,7 +49,7 @@ public class CursoController {
         System.out.print("Informe o código do curso a ser removido: ");
         int codigo = scanner.nextInt();
 
-        if (CursoDAO.delete(codigo)) {
+        if (CursoDAO.remover(codigo)) {
             System.out.println("Curso removido com sucesso!");
         } else {
             System.out.println("Curso não encontrado!");

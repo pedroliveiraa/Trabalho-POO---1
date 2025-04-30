@@ -2,6 +2,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import dao.CursoDAO;
 import model.Curso;
 import model.Disciplina;
 
@@ -59,21 +60,17 @@ public class DisciplinaController {
         public static void removerdisciplina()
         {
             Scanner scanner  = new Scanner(System.in);
-            System.out.print("informe o codigo da disciplina a ser removida:")
-            int codigo = scanner.nextInt();
+            System.out.print("informe o codigo da disciplina a ser removida:");
 
+            int codigo = scanner.nextInt();
 
             for (Disciplina disciplina: disciplinas)
             {
                 if (disciplina.getCodigodisciplina() == codigo)
                 {
                     disciplinas.remove(disciplina);
-                    for (Curso curso: CursoController.getCursos()){}
-                    // para remover uma disciplina,precisa remover tambem o curso.
-                        // sendo assim,para fazer essa parte, depende da classe cursoController e aluno
-                        // pois o aluno tera o curso cadastrado
-                }
-                System.out.println("disciplina removida!");
+
+                System.out.println("disciplina removida!"); // remove disciplina
                 return;
             }
             System.out.println("disciplina não encontrada!");
@@ -85,7 +82,6 @@ public class DisciplinaController {
             System.out.print("informe o codigo da disciplina a ser atualizada:");
             int codigo = scanner.nextInt();
 
-
             for (Disciplina disciplina: disciplinas)
             {
                 if (disciplina.getCodigodisciplina() == codigo)
@@ -93,10 +89,8 @@ public class DisciplinaController {
                     System.out.print("informe um novo nome:");
                     disciplina.setNomedisciplina(scanner.next());
 
-
                     System.out.print("informe qual será a nova carga horaria:");
                     disciplina.setCargahoraria(scanner.nextInt());
-
 
                     System.out.println("novos dados da disciplina foram cadastrados!");
                     return;

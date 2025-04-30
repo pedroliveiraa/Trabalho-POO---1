@@ -1,8 +1,7 @@
 package dao;
-import model.Curso;
-import model.aluno;
 import java.util.ArrayList;
 import java.util.List;
+import model.Curso;
 
 public class CursoDAO {
     private static List<Curso> cursos = new ArrayList<>();
@@ -24,7 +23,7 @@ public class CursoDAO {
         return null;
     }
 
-    public static boolean delete(int codigo) {
+    public static boolean remover(int codigo) {
         Curso curso = get(codigo);
         if (curso != null) {
             cursos.remove(curso);
