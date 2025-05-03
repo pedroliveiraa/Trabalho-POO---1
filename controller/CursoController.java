@@ -1,5 +1,8 @@
 package controller;
 import dao.CursoDAO;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import model.Curso;
 
@@ -76,15 +79,19 @@ public class CursoController {
     }
 
     // Método para listar todos os cursos
-    public static void listarCursos() {
-        if (CursoDAO.getAll().isEmpty()) {
+    public static List<Curso> listarCursos() {
+        List<Curso> cursos = CursoDAO.getAll();
+
+        if (cursos.isEmpty()) {
             System.out.println("Nenhum curso cadastrado!");
-            return;
+            return new ArrayList<>(); // retorna uma lista vazia, não null
         }
 
         System.out.println("Lista de cursos cadastrados:");
-        for (Curso curso : CursoDAO.getAll()) {
+        for (Curso curso : cursos) {
             System.out.println(curso);
         }
+
+        return cursos; // <- AGORA SIM
     }
 }

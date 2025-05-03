@@ -1,5 +1,6 @@
 package model;
 
+
 public class Aluno {
 
     private int matricula;
@@ -44,5 +45,11 @@ public class Aluno {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+
+    public void mostrarAluno() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Idade: " + idade);
+        System.out.println("Curso: " + curso.getNomeCurso());
     }
 }

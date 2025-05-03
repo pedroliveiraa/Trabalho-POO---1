@@ -1,6 +1,7 @@
 package view;
 
 import model.Curso;
+import model.Aluno;
 
 import java.util.List;
 
@@ -14,17 +15,20 @@ public class AlunoView {
         System.out.println("Informe a sua idade: ");
     }
 
-    public static void Curso(List<Curso> cursos) {
-        System.out.println("Informe o seu curso: ");
-        int cont = 1;
-        for(Curso curso : cursos) {
-            System.out.println(cont + ". " + curso);
-            cont++;
-        }
+    public static void Curso() {
+        System.out.println("Informe o codigo do curso: ");
     }
 
     public static void SolicitaMatricula() {
         System.out.println("Informe a sua matricula: ");
+    }
+
+    public static void AlunoCadastrado() {
+        System.out.println("Aluno cadastrado");
+    }
+
+    public static void AlunoNaoEncontrado() {
+        System.out.println("Aluno não encontrado");
     }
 
 

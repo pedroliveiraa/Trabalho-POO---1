@@ -1,17 +1,23 @@
 package controller;
 
 import dao.AlunoDAO;
+
+import java.util.List;
 import java.util.Scanner;
 import model.Aluno;
+import model.Curso;
 import view.AlunoView;
 
 public class AlunoController {
 
-    static int matricula = 0;
+    
 
     public static void Cadastrar() {
 
         Scanner scan = new Scanner(System.in);
+
+        AlunoView.SolicitaMatricula();
+        int matricula = scan.nextInt();
 
         AlunoView.Nome();
         String nome = scan.next();
@@ -19,11 +25,23 @@ public class AlunoController {
         AlunoView.Idade();
         int idade  = scan.nextInt();
 
-        AlunoView.Curso(null);
-        int opcao = scan.nextInt();
+        List<Curso> cursos = CursoController.listarCursos();
 
-        Aluno aluno = new Aluno(NewMatricula(), nome, idade, null);
+        AlunoView.Curso();
+        int opcao = scan.nextInt() - 1;
+
+        Curso curso = null;
+        if (opcao >= 0 && opcao < cursos.size()) {
+            curso = cursos.get(opcao);
+        } else {
+            System.out.println("Opção de curso invalida");
+            return;
+        }
+
+        Aluno aluno = new Aluno(matricula, nome, idade, curso);
         AlunoDAO.insert(aluno);
+
+        AlunoView.AlunoCadastrado();
 
     }
 
@@ -34,7 +52,14 @@ public class AlunoController {
         AlunoView.SolicitaMatricula();
         int matricula = scan.nextInt();
 
-        AlunoDAO.get(matricula);
+        Aluno aluno = AlunoDAO.get(matricula);
+
+        if (aluno != null) {
+            System.out.println("Aluno encontrado:");
+            aluno.mostrarAluno();
+        } else {
+            AlunoView.AlunoNaoEncontrado();
+        }
     }
 
     public static void Remover() {
@@ -48,7 +73,7 @@ public class AlunoController {
         if (sucesso) {
             System.out.println("Aluno removido com sucesso");
         } else {
-            System.out.println("Aluno não encontrado");
+            AlunoView.AlunoNaoEncontrado();
         }
     }
 
@@ -69,16 +94,25 @@ public class AlunoController {
             int idade = scan.nextInt();
             aluno.setIdade(idade);
 
-            // vou precisar de um metodo para atualizar o curso, mas tenho que esperar o sorrizo fazer
+            List<Curso> cursos = CursoController.listarCursos();
 
-            System.out.println("Informações do aluno atualizadas com sucesso!");
+
+            AlunoView.Curso();
+            int opcao = scan.nextInt() - 1;
+
+            Curso curso = null;
+            if (opcao >= 0 && opcao < cursos.size()) {
+                curso = cursos.get(opcao);
+                aluno.setCurso(curso);
+            } else {
+                System.out.println("Opção de curso invalida");
+                return;
+            }
+            
+            System.out.println("Informações do aluno atualizadas com sucesso");
         } else {
-            System.out.println("Aluno não encontrado.");
+            AlunoView.AlunoNaoEncontrado();
         }
-    }
-
-    public static int NewMatricula() {
-        return ++matricula;
     }
 
 }

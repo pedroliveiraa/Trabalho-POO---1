@@ -17,8 +17,12 @@ public class AlunoDAO {
     }
 
     public static Aluno get(int matricula) {
-        return alunoList.stream().findFirst().filter(a -> a.getMatricula() == matricula).get();
+        //return alunoList.stream().findFirst().filter(a -> a.getMatricula() == matricula).get();
         //return alunoList.get(matricula);
+        return alunoList.stream()
+        .filter(a -> a.getMatricula() == matricula)
+        .findFirst()
+        .orElse(null);
     }
 
     public static boolean Apagar(int matricula) {
@@ -29,4 +33,6 @@ public class AlunoDAO {
         }
         return false;
     }
+
+    
 }

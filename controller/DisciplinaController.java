@@ -56,6 +56,31 @@ public class DisciplinaController {
             }
             System.out.println("disciplina não encontrada!");
         }
+
+        // metodo 4-Atualizar DISCIPLINA
+        public static void atualizardisciplina()
+        {
+            Scanner scanner  = new Scanner(System.in);
+            System.out.print("informe o codigo da disciplina a ser atualizada:");
+            int codigo = scanner.nextInt();
+
+            for (Disciplina disciplina: disciplinas)
+            {
+                if (disciplina.getCodigodisciplina() == codigo)
+                {
+                    System.out.print("informe um novo nome:");
+                    disciplina.setNomedisciplina(scanner.next());
+
+                    System.out.print("informe qual será a nova carga horaria:");
+                    disciplina.setCargahoraria(scanner.nextInt());
+
+                    System.out.println("novos dados da disciplina foram cadastrados!");
+                    return;
+                }
+            }
+            System.out.println("disciplina nao encontrada!");
+        }
+
         // metodo 3-Remover DISCIPLINA
         public static void removerdisciplina()
         {
@@ -75,28 +100,5 @@ public class DisciplinaController {
             }
             System.out.println("disciplina não encontrada!");
         }
-        // metodo 4-Atualizar DISCIPLINA
-        public static void atualizardisciplina()
-        {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("informe o codigo da disciplina a ser atualizada:");
-            int codigo = scanner.nextInt();
-
-            for (Disciplina disciplina: disciplinas)
-            {
-                if (disciplina.getCodigodisciplina() == codigo)
-                {
-                    System.out.print("informe um novo nome:");
-                    disciplina.setNomedisciplina(scanner.next());
-
-                    System.out.print("informe qual será a nova carga horaria:");
-                    disciplina.setCargahoraria(scanner.nextInt());
-
-                    System.out.println("novos dados da disciplina foram cadastrados!");
-                    return;
-                }
-            }
-            System.out.println("disciplina nao encontrada!");
-
-        }
+    }
 }
