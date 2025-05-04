@@ -35,7 +35,7 @@ public class DisciplinaController {
 
 
             Disciplina disciplina = new Disciplina(codigo, nome, cargah);
-            disciplinas.add(disciplina); // adicionando na lista
+            DisciplinaDAO.Insert(disciplina); // adicionando na lista
             System.out.println("disciplina cadastrada!");
         }
         // metodo 2-Consultar DISCIPLINA
@@ -104,7 +104,8 @@ public class DisciplinaController {
         
     }
 
-    public static List<Disciplina> listarDisciplinas() {
+        // metodo pra mostrar as diciplinas na lista
+        public static List<Disciplina> listarDisciplinas() {
         List<Disciplina> disciplinas = DisciplinaDAO.getAll(); // Obtendo as disciplinas da DAO
 
         if (disciplinas.isEmpty()) {

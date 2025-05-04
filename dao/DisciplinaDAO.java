@@ -11,14 +11,17 @@ import java.util.List;
         {
             disciplinaList.add(disciplina); // adicionando a disciplina
         }
+        
         public static List<Disciplina> getAll()
         {
             return disciplinaList;
         }
+
         public static Disciplina get(int codigodisciplina)
         {
             return disciplinaList.stream().findFirst().filter(a -> a.getCodigodisciplina() == codigodisciplina).get();
         }
+
         public static boolean Remover (int codigodisciplina)
         {
             Disciplina disciplina = get(codigodisciplina);

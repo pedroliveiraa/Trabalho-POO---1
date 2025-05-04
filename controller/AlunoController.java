@@ -9,8 +9,6 @@ import view.AlunoView;
 
 public class AlunoController {
 
-    
-
     public static void Cadastrar() {
 
         Scanner scan = new Scanner(System.in);
