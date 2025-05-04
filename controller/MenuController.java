@@ -26,7 +26,7 @@ public class MenuController {
 
     }
 
-public static void GerenciaSubMenuAluno() {
+    public static void GerenciaSubMenuAluno() {
         Scanner scan = new Scanner(System.in);
         int opcao = -1;
 
