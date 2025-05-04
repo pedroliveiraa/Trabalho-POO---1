@@ -36,5 +36,9 @@ public class Disciplina {
         this.cargahoraria = cargahoraria;
     }
 
+    @Override
+    public String toString() {
+        return "Disciplina [Código: " + codigodisciplina + ", Nome: " + nomedisciplina + ", Carga Horária: " + cargahoraria + "]";
+    }
 
 }
