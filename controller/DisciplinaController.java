@@ -1,9 +1,8 @@
 package controller;
+import dao.DisciplinaDAO;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-
-import dao.CursoDAO;
-import model.Curso;
 import model.Disciplina;
 
 public class DisciplinaController {
@@ -100,5 +99,23 @@ public class DisciplinaController {
             }
             System.out.println("disciplina não encontrada!");
         }
+
+        
+        
     }
+
+    public static List<Disciplina> listarDisciplinas() {
+        List<Disciplina> disciplinas = DisciplinaDAO.getAll(); // Obtendo as disciplinas da DAO
+
+        if (disciplinas.isEmpty()) {
+            System.out.println("Nenhuma disciplina cadastrada!");
+            return new ArrayList<>();
+        }
+
+        System.out.println("Lista de disciplinas cadastradas:");
+        for (Disciplina disciplina : disciplinas) {
+            System.out.println(disciplina); // Presume que Disciplina possui um método toString()
+        }return disciplinas;
+    }
+    
 }

@@ -1,7 +1,6 @@
 package controller;
 
 import dao.AlunoDAO;
-
 import java.util.List;
 import java.util.Scanner;
 import model.Aluno;
